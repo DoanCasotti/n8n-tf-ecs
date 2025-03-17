@@ -32,8 +32,8 @@ resource "aws_iam_role_policy_attachment" "ssm_managed_instance_core" {
 # Criando o Instance Profile para ser usado pelas instâncias do ECS
 resource "aws_iam_instance_profile" "ecs_node" {
   name = "ecs-instance-role-profile-tf"
-  path        = "/ecs/instance/"
-  role        = aws_iam_role.ecs_instance_role.name
+  path = "/ecs/instance/"
+  role = aws_iam_role.ecs_instance_role.name
 }
 
 # Criando a IAM Role para execução de tarefas no ECS

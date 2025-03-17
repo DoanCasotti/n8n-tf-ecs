@@ -3,7 +3,7 @@ resource "aws_security_group" "n8n_redis_sg" {
   name        = "n8n-redis-sg-tf"
   description = "Acesso ao n8n-redis-sg-tf"
   vpc_id      = aws_vpc.this.id
-  
+
   ingress {
     description     = "acesso do n8n-cluster-ec2-tf"
     from_port       = 6379
