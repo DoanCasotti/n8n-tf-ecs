@@ -19,7 +19,7 @@ resource "aws_autoscaling_group" "ecs" {
 
   tag {
     key                 = "Name"
-    value               = "cluster-n8n-tf"
+    value               = "cluster-n8n-qm-tf"
     propagate_at_launch = true
   }
 
