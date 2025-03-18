@@ -1,11 +1,11 @@
 resource "aws_ecs_task_definition" "n8n" {
   family                   = "task-n8n"
   network_mode             = "bridge"
-  requires_compatibilities = ["EC2"] 
+  requires_compatibilities = ["EC2"]
   execution_role_arn       = aws_iam_role.ecs_task_execution_role.arn
   task_role_arn            = aws_iam_role.ecs_task_role.arn
 
-   runtime_platform {
+  runtime_platform {
     cpu_architecture        = "ARM64"
     operating_system_family = "LINUX"
   }
