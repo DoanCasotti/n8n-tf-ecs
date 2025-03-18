@@ -126,7 +126,7 @@ variable "rds_skip_final_snapshot" {
 }
 
 variable "N8N_ENCRYPTION_KEY" {
-  description = "Chave de criptografia do n8n"
+  description = "Chave criptografia do n8n"
   type        = string
   default     = "175da018a5f60d14b09088e53d47a547"
 }
