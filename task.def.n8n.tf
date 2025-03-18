@@ -61,4 +61,3 @@ resource "aws_ecs_task_definition" "n8n" {
     Namespace   = "n8nmarcio"
   }
 }
-
