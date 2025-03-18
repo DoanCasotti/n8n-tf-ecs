@@ -12,7 +12,7 @@ resource "aws_ecs_service" "redis" {
 
   network_configuration {
     security_groups = [aws_security_group.n8n_redis_sg.id]
-    subnets         = aws_subnet.private.*.id    
+    subnets         = concat(aws_subnet.public.*.id, aws_subnet.private.*.id)
   }
 
   ordered_placement_strategy {
@@ -24,7 +24,6 @@ resource "aws_ecs_service" "redis" {
     type  = "spread"
     field = "attribute:ecs.instance-type"
   }
-
 
   deployment_minimum_healthy_percent = 50
   deployment_maximum_percent         = 100

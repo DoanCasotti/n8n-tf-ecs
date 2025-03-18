@@ -5,12 +5,12 @@ resource "aws_security_group" "n8n_redis_sg" {
   vpc_id      = aws_vpc.this.id
 
   ingress {
-    description     = "acesso do n8n-cluster-ec2-tf"
+    description     = "acesso do redis"
     from_port       = 6379
     to_port         = 6379
     protocol        = "tcp"
     cidr_blocks     = []
-    security_groups = [aws_security_group.n8n_cluster_ec2.id]
+    security_groups = ["0.0.0.0/0"]
   }
   egress {
     from_port   = 0
