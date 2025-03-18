@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 resource "aws_autoscaling_group" "ecs" {
   name_prefix               = "cluster-ecs-n8n-asg-tf-"
   vpc_zone_identifier       = [aws_subnet.public[0].id, aws_subnet.public[1].id]
@@ -38,7 +37,7 @@ resource "aws_autoscaling_lifecycle_hook" "ecs_terminate_hook" {
   heartbeat_timeout      = 60
   default_result         = "CONTINUE"
 }
-=======
+
 resource "aws_autoscaling_group" "ecs" {
   name_prefix               = "cluster-ecs-n8n-asg-tf-"
   vpc_zone_identifier       = [aws_subnet.public[0].id, aws_subnet.public[1].id]
@@ -118,4 +117,3 @@ resource "aws_autoscaling_lifecycle_hook" "ecs_terminate_hook" {
   heartbeat_timeout      = 60
   default_result         = "CONTINUE"
 }
->>>>>>> 231b92e (Salvando alterações locais em asg_ecs.tf, ecs.cluster.tf e ecs_launch_template.tf)
