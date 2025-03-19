@@ -10,14 +10,14 @@ resource "aws_ecs_service" "worker" {
     weight            = 100
   }
 
-  ordered_placement_strategy {
+ ordered_placement_strategy {
     type  = "spread"
     field = "attribute:ecs.availability-zone"
   }
 
   ordered_placement_strategy {
     type  = "spread"
-    field = "attribute:ecs.instance-type"
+    field = "instanceId"
   }
 
   deployment_minimum_healthy_percent = 50

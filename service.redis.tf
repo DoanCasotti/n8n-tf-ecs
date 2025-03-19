@@ -22,7 +22,7 @@ resource "aws_ecs_service" "redis" {
 
   ordered_placement_strategy {
     type  = "spread"
-    field = "attribute:ecs.instance-type"
+    field = "instanceId"
   }
 
   deployment_minimum_healthy_percent = 50
