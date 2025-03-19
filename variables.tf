@@ -28,7 +28,7 @@ variable "vpc" {
     cidr_block               = string
     internet_gateway_name    = string
     public_route_table_name  = string
-    private_route_table_name = string    
+    private_route_table_name = string
     public_subnets = list(object({
       name                    = string
       cidr_block              = string
@@ -47,7 +47,7 @@ variable "vpc" {
     name                     = "vpc-projeto3-ECS"
     internet_gateway_name    = "internet-gateway"
     public_route_table_name  = "public-route-table"
-    private_route_table_name = "private-route-table"    
+    private_route_table_name = "private-route-table"
     public_subnets = [{
       name                    = "public-subnet-us-east-1a"
       cidr_block              = "172.36.0.0/20"
