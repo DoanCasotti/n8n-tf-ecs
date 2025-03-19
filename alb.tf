@@ -13,6 +13,12 @@ resource "aws_lb_target_group" "this" {
   target_type          = "instance"
   deregistration_delay = 30
 
+  stickiness {
+    type            = "lb_cookie"
+    enabled         = true
+    cookie_duration = 86400  # Tempo em segundos (1 dia)
+  }
+
   health_check {
     enabled             = true
     path                = "/healthz"
