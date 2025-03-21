@@ -76,54 +76,31 @@ variable "vpc" {
 }
 
 # Variáveis do RDS
-variable "rds_identifier" {
-  description = "Identificador da instância RDS"
+variable "aurora_cluster_identifier" {
+  description = "Identificador do cluster Aurora"
   type        = string
-  default     = "n8n-qm"
+  default     = "aurora-n8n"
 }
 
-variable "rds_allocated_storage" {
-  description = "Espaço alocado para o RDS (em GB)"
-  type        = number
-  default     = 20
-}
-
-variable "rds_engine" {
-  description = "Engine do RDS"
-  type        = string
-  default     = "postgres"
-}
-
-variable "rds_instance_class" {
-  description = "Classe da instância do RDS"
-  type        = string
-  default     = "db.t4g.small"
-}
-
-variable "rds_db_name" {
+variable "aurora_db_name" {
   description = "Nome do banco de dados"
   type        = string
   default     = "n8n"
 }
 
-variable "rds_username" {
-  description = "Usuário do banco de dados"
+variable "aurora_username" {
+  description = "Usuário master do Aurora"
   type        = string
   default     = "postgres"
 }
 
-variable "rds_password" {
-  description = "Senha do banco de dados"
+variable "aurora_password" {
+  description = "Senha do usuário master"
   type        = string
   sensitive   = true
   default     = "postgres"
 }
 
-variable "rds_skip_final_snapshot" {
-  description = "Pular ou não o snapshot final na deleção"
-  type        = bool
-  default     = true
-}
 
 variable "N8N_ENCRYPTION_KEY" {
   description = "Chave criptografia do n8n"
