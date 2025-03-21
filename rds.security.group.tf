@@ -1,5 +1,5 @@
 # Criar um Security Group para o RDS
-resource "aws_security_group" "rds_sg" {
+resource "aws_security_group" "aurora_sg" {
   name   = "db-n8n-qm-tf"
   vpc_id = aws_vpc.this.id
   ingress {

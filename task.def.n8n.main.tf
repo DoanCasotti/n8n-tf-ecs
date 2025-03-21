@@ -2,9 +2,7 @@ resource "aws_ecs_task_definition" "n8n_main" {
   family                   = "n8n-main"
   execution_role_arn       = aws_iam_role.ecs_task_execution_role.arn
   network_mode             = "bridge"
-  requires_compatibilities = ["EC2"]
-  cpu                      = "717"
-  memory                   = "512"
+  requires_compatibilities = ["EC2"] 
 
   runtime_platform {
     cpu_architecture        = "ARM64"
@@ -32,17 +30,17 @@ resource "aws_ecs_task_definition" "n8n_main" {
       "environment" : [
         { "name" : "QUEUE_BULL_REDIS_DB", "value" : "0" },
         { "name" : "DB_POSTGRESDB_SSL_REJECT_UNAUTHORIZED", "value" : "false" },
-        { "name" : "DB_POSTGRESDB_DATABASE", "value" : "${var.rds_db_name}" },
+        { "name" : "DB_POSTGRESDB_DATABASE", "value" : "${var.aurora_db_name}" },
         { "name" : "N8N_LOG_LEVEL", "value" : "debug" },
         { "name" : "EXECUTIONS_MODE", "value" : "queue" },
         { "name" : "QUEUE_BULL_REDIS_HOST", "value" : "service.redis" },
-        { "name" : "DB_POSTGRESDB_PASSWORD", "value" : "${var.rds_password}" },
+        { "name" : "DB_POSTGRESDB_PASSWORD", "value" : "${var.aurora_password}" },
         { "name" : "N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS", "value" : "true" },
         { "name" : "N8N_PORT", "value" : "5678" },
-        { "name" : "DB_POSTGRESDB_HOST", "value" : "${aws_db_instance.this.address}" },
+        { "name" : "DB_POSTGRESDB_HOST", "value" : "${aws_rds_cluster.aurora.endpoint}" },
         { "name" : "DB_TYPE", "value" : "postgresdb" },
         { "name" : "QUEUE_BULL_REDIS_PORT", "value" : "6379" },
-        { "name" : "DB_POSTGRESDB_USER", "value" : "${var.rds_username}" },
+        { "name" : "DB_POSTGRESDB_USER", "value" : "${var.aurora_username}" },
         { "name" : "N8N_ENCRYPTION_KEY", "value" : "${var.N8N_ENCRYPTION_KEY}" },
         { "name" : "N8N_RELEASE_DATE", "value" : "2024-06-12T12:34:56Z" },
         { "name" : "GENERIC_TIMEZONE", "value" : "America/Sao_Paulo" },
@@ -69,3 +67,4 @@ resource "aws_ecs_task_definition" "n8n_main" {
   ])
 
 }
+
