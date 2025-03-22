@@ -10,7 +10,7 @@ resource "aws_ecs_service" "worker" {
     weight            = 100
   }
 
- ordered_placement_strategy {
+  ordered_placement_strategy {
     type  = "spread"
     field = "attribute:ecs.availability-zone"
   }

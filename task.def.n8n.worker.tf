@@ -33,7 +33,8 @@ resource "aws_ecs_task_definition" "n8n_worker" {
         { "name" : "DB_TYPE", "value" : "postgresdb" },
         { "name" : "QUEUE_BULL_REDIS_PORT", "value" : "6379" },
         { "name" : "DB_POSTGRESDB_USER", "value" : "${var.aurora_username}" },
-        { "name" : "N8N_ENCRYPTION_KEY", "value" : "${var.N8N_ENCRYPTION_KEY}" },        
+        { "name" : "N8N_ENCRYPTION_KEY", "value" : "${var.N8N_ENCRYPTION_KEY}" },
+        { "name" : "N8N_RELEASE_DATE", "value" : "2024-06-12T12:34:56Z" },
         { "name" : "GENERIC_TIMEZONE", "value" : "America/Sao_Paulo" },
         { "name" : "QUEUE_BULL_PREFIX", "value" : "bull:jobs" }
       ],
