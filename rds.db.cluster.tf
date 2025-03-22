@@ -11,6 +11,7 @@ resource "aws_rds_cluster" "aurora" {
   storage_encrypted      = true
   deletion_protection    = false
   apply_immediately      = true
+  skip_final_snapshot    = true  
 }
 
 resource "aws_rds_cluster_instance" "aurora_writer" {
