@@ -37,7 +37,7 @@ resource "aws_ecs_service" "n8n_main" {
   deployment_minimum_healthy_percent = 50
   deployment_maximum_percent         = 100
 
-  depends_on = [aws_ecs_service.redis, aws_lb_target_group.this]
+  depends_on = [aws_lb_target_group.this]
 
   load_balancer {
     target_group_arn = aws_lb_target_group.this.arn

@@ -1,8 +1,8 @@
-resource "aws_ecs_service" "redis" {
-  name            = "service-redis"
+resource "aws_ecs_service" "redis-master" {
+  name            = "service-redis-master"
   cluster         = aws_ecs_cluster.this.id
-  task_definition = aws_ecs_task_definition.redis.arn
-  desired_count   = 2
+  task_definition = aws_ecs_task_definition.redis-master.arn
+  desired_count   = 1
 
   capacity_provider_strategy {
     capacity_provider = aws_ecs_capacity_provider.this.name

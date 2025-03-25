@@ -46,8 +46,8 @@ resource "aws_ecs_task_definition" "n8n_main" {
         { "name" : "GENERIC_TIMEZONE", "value" : "America/Sao_Paulo" },
         { "name" : "QUEUE_BULL_PREFIX", "value" : "bull:jobs" },
         { "name" : "N8N_API_TRUST_PROXY", "value" : "true" },
-        { "name" : "WEBHOOK_URL", "value" : "https://n8n10.jovando.com.br" },
-        { "name" : "N8N_HOST", "value" : "n8n10.jovando.com.br" },
+        { "name" : "WEBHOOK_URL", "value" : "https://n8n10.hardcloud.com.br" },
+        { "name" : "N8N_HOST", "value" : "n8n10.hardcloud.com.br" },
         { "name" : "N8N_PROTOCOL", "value" : "https" }
 
       ],
