@@ -85,3 +85,36 @@ resource "aws_security_group" "n8n_cluster_alb_tf" {
 
 }
 
+# Security Group for EFS
+resource "aws_security_group" "redis_efs" {
+  name        = "redis-efs-from-ec2-tf"
+  description = "Security group para o Redis EFS"
+  vpc_id      = aws_vpc.this.id
+
+  ingress {
+    from_port       = 2049
+    to_port         = 2049
+    protocol        = "tcp"
+    cidr_blocks     = []
+    security_groups = [aws_security_group.n8n_redis_sg.id]
+    description     = "acesso do n8n-redis-sg-tf"
+  }
+  ingress {
+    from_port       = 2049
+    to_port         = 2049
+    protocol        = "tcp"
+    cidr_blocks     = []
+    security_groups = [aws_security_group.n8n_cluster_ec2.id]
+    description     = "acesso do n8n-cluster-ec2-tf"
+  }
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "redis-efs-from-ec2-tf"
+  }
+}
