@@ -12,7 +12,7 @@ resource "aws_ecs_service" "redis" {
 
   network_configuration {
     security_groups = [aws_security_group.n8n_redis_sg.id]
-    subnets         = concat(aws_subnet.public.*.id, aws_subnet.private.*.id)
+    subnets         = concat(aws_subnet.public.*.id)
   }
 
   ordered_placement_strategy {
