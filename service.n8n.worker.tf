@@ -23,6 +23,8 @@ resource "aws_ecs_service" "worker" {
   deployment_minimum_healthy_percent = 50
   deployment_maximum_percent         = 100
 
+  depends_on = [aws_ecs_service.redis-master]
+
   lifecycle {
     ignore_changes = [desired_count]
   }

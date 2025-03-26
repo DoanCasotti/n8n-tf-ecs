@@ -1,12 +1,12 @@
 resource "aws_lb" "this" {
-  name               = "n8n-alb-tf"
+  name               = "alb-n8n-qm-tf"
   load_balancer_type = "application"
   subnets            = [aws_subnet.public[0].id, aws_subnet.public[1].id]
   security_groups    = [aws_security_group.n8n_cluster_alb_tf.id]
 }
 
 resource "aws_lb_target_group" "this" {
-  name_prefix          = "tgn8n-"
+  name                 = "tg-n8n-qm-tf"
   vpc_id               = aws_vpc.this.id
   protocol             = "HTTP"
   port                 = 80

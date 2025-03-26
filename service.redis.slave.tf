@@ -25,8 +25,10 @@ resource "aws_ecs_service" "redis-slave" {
     field = "instanceId"
   }
 
-  deployment_minimum_healthy_percent = 50
+  deployment_minimum_healthy_percent = 0
   deployment_maximum_percent         = 100
+
+  depends_on = [aws_ecs_service.redis-master]
 
   service_registries {
     registry_arn = aws_service_discovery_service.this.arn
