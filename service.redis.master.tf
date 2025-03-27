@@ -28,6 +28,8 @@ resource "aws_ecs_service" "redis-master" {
   deployment_minimum_healthy_percent = 0
   deployment_maximum_percent         = 100
 
+  depends_on = [aws_rds_cluster_instance.aurora_reader]
+
   service_registries {
     registry_arn = aws_service_discovery_service.this.arn
   }
