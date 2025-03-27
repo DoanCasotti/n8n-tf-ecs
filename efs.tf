@@ -20,8 +20,6 @@ resource "aws_efs_file_system" "redis" {
     transition_to_archive = "AFTER_90_DAYS"
   }
 
-  
-
 
   tags = {
     Name        = "redis-efs"

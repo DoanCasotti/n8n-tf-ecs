@@ -28,14 +28,31 @@ resource "aws_ecs_service" "redis-slave" {
   deployment_minimum_healthy_percent = 0
   deployment_maximum_percent         = 100
 
-  depends_on = [aws_ecs_service.n8n_main]
+  depends_on = [ # ⬅️ Adicionando dependência aqui
+    aws_ecs_service.n8n_main,
+    aws_ecs_service.worker,
+    aws_ecs_service.redis-master
+  ]
 
   service_registries {
     registry_arn = aws_service_discovery_service.this.arn
   }
 
-
   lifecycle {
     ignore_changes = [desired_count]
   }
 }
+
+resource "null_resource" "wait_for_services" {
+  depends_on = [
+    aws_ecs_service.n8n_main,
+    aws_ecs_service.worker,
+    aws_ecs_service.redis-master,
+  ]
+
+  provisioner "local-exec" {
+    command = "sleep 120" # Aguarda 120 segundos antes de continuar
+  }
+}
+
+
