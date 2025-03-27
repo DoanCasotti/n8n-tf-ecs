@@ -1,5 +1,5 @@
 resource "aws_autoscaling_group" "ecs" {
-  name_prefix               = "cluster-ecs-n8n-asg-tf-"
+  name                      = "cluster-ecs-n8n-asg-tf"
   vpc_zone_identifier       = [aws_subnet.public[0].id, aws_subnet.public[1].id]
   min_size                  = 2
   desired_capacity          = 2

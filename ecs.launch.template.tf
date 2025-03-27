@@ -1,5 +1,5 @@
 resource "aws_launch_template" "ecs_ec2" {
-  name_prefix            = "cluster-n8n-qm"
+  name                   = "cluster-n8n-qm"
   image_id               = "ami-06576e7f3e9f61770"
   instance_type          = "t4g.small"
   vpc_security_group_ids = [aws_security_group.n8n_cluster_ec2.id]
