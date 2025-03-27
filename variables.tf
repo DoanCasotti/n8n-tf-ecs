@@ -79,7 +79,7 @@ variable "vpc" {
 variable "aurora_cluster_identifier" {
   description = "Identificador do cluster Aurora"
   type        = string
-  default     = "aurora-n8n"
+  default     = "n8n-qm"
 }
 
 variable "aurora_db_name" {
